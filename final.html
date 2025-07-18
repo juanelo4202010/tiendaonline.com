@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tienda de Módulos iPhone</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #0f0f0f, #1c1c1c);
+      color: #fff;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 30px;
+      background-color: rgba(20, 20, 20, 0.95);
+      border-radius: 15px;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.7);
+    }
+    h1 {
+      text-align: center;
+      font-size: 3rem;
+      margin-bottom: 40px;
+      text-shadow: 2px 2px 10px #000;
+    }
+    .producto {
+      display: flex;
+      background-color: #2a2a2a;
+      border-radius: 15px;
+      margin-bottom: 25px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+      align-items: center;
+      transition: transform 0.3s ease;
+    }
+    .producto:hover {
+      transform: scale(1.03);
+    }
+    .producto img {
+      width: 200px;
+      height: auto;
+      border-radius: 15px;
+      box-shadow: 0 0 12px #000;
+      margin-right: 20px;
+      flex-shrink: 0;
+    }
+    .detalle {
+      flex: 1;
+    }
+    .detalle h2 {
+      margin: 0;
+      font-size: 1.8rem;
+    }
+    .detalle p {
+      margin: 10px 0;
+      font-size: 1.1rem;
+    }
+    .stock {
+      color: #7CFC00;
+    }
+    .btn-agregar {
+      padding: 10px 18px;
+      background-color: #25D366;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: background-color 0.3s ease;
+    }
+    .btn-agregar:hover {
+      background-color: #1ebe57;
+    }
+    .carrito {
+      text-align: center;
+      margin-top: 40px;
+    }
+    .carrito textarea {
+      width: 100%;
+      height: 100px;
+      padding: 15px;
+      font-size: 1rem;
+      border-radius: 10px;
+      border: none;
+      margin-bottom: 20px;
+      resize: none;
+    }
+    .total {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+    .whatsapp {
+      display: inline-block;
+      background-color: #25D366;
+      color: white;
+      font-weight: bold;
+      text-align: center;
+      padding: 15px 25px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-size: 1.2rem;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.5);
+      transition: background-color 0.3s ease;
+    }
+    .whatsapp:hover {
+      background-color: #1ebe57;
+    }
+    @media (max-width: 700px) {
+      .producto {
+        flex-direction: column;
+        text-align: center;
+      }
+      .producto img {
+        margin: 0 auto 20px;
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Módulos para iPhone</h1>
+
+    <!-- Producto 1 -->
+    <div class="producto">
+      <img src="pexels-prashant-singh-243774909-12351704 (1).jpg" alt="Módulo iPhone 12" style="width: 100px; height: auto; border-radius: 15px; box-shadow: 0 0 12px #000;"/>
+      <div class="detalle">
+        <h2>Módulo iPhone 12</h2>
+        <p>Precio: $300,000</p>
+        <p class="stock">Stock: 100 unidades</p>
+        <button class="btn-agregar" onclick="agregarAlCarrito('Módulo iPhone 12', 300000)">Agregar al carrito</button>
+      </div>
+    </div>
+
+    <!-- Producto 2 -->
+    <div class="producto">
+      <img src="https://images.unsplash.com/photo-1603791440384-56cd371ee9a7?auto=format&fit=crop&w=800&q=80" alt="Módulo iPhone 11" style="width: 100px; height: auto; border-radius: 15px; box-shadow: 0 0 12px #000;"/>
+      <div class="detalle">
+        <h2>Módulo iPhone 11</h2>
+        <p>Precio: $250,000</p>
+        <p class="stock">Stock: 100 unidades</p>
+        <button class="btn-agregar" onclick="agregarAlCarrito('Módulo iPhone 11', 250000)">Agregar al carrito</button>
+      </div>
+    </div>
+
+    <!-- Producto 3 -->
+    <div class="producto">
+      <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=800&q=80" alt="Módulo iPhone X" style="width: 100px; height: auto; border-radius: 15px; box-shadow: 0 0 12px #000;"/>
+      <div class="detalle">
+        <h2>Módulo iPhone X</h2>
+        <p>Precio: $200,000</p>
+        <p class="stock">Stock: 100 unidades</p>
+        <button class="btn-agregar" onclick="agregarAlCarrito('Módulo iPhone X', 200000)">Agregar al carrito</button>
+      </div>
+    </div>
+
+    <!-- Carrito -->
+    <div class="carrito">
+      <h2>Tu carrito</h2>
+      <textarea id="carritoTexto" placeholder="Los productos seleccionados aparecerán aquí..." readonly></textarea>
+      <div class="total" id="totalPrecio"></div>
+      <a id="whatsappBtn" href="#" target="_blank" class="whatsapp" style="display: none;">Enviar pedido por WhatsApp</a>
+    </div>
+  </div>
+
+  <script>
+    const carrito = [];
+    const carritoTexto = document.getElementById("carritoTexto");
+    const whatsappBtn = document.getElementById("whatsappBtn");
+    const totalPrecio = document.getElementById("totalPrecio");
+
+    function agregarAlCarrito(nombre, precio) {
+      carrito.push({ nombre, precio });
+      actualizarCarrito();
+    }
+
+    function actualizarCarrito() {
+      const items = carrito.map(item => `- ${item.nombre} - $${item.precio.toLocaleString()}`);
+      const total = carrito.reduce((sum, item) => sum + item.precio, 0);
+
+      carritoTexto.value = items.join('\n');
+      totalPrecio.innerText = `Total: $${total.toLocaleString()}`;
+
+      if (carrito.length > 0) {
+        const mensaje = encodeURIComponent(
+          `Hola, quiero pedir los siguientes productos:\n${items.join('\n')}\n\nTotal: $${total.toLocaleString()}`
+        );
+        whatsappBtn.href = `https://wa.me/543584240720?text=${mensaje}`;
+        whatsappBtn.style.display = "inline-block";
+      } else {
+        whatsappBtn.style.display = "none";
+      }
+    }
+  </script>
+</body>
+</html>
